@@ -53,13 +53,20 @@ export default function Home() {
 
       {/* Work Experience Section */}
       <section className="w-full">
-        <h2 className="text-3xl font-semibold text-center mb-8">Work Experience</h2>
+        <motion.h2 
+          className="text-3xl font-semibold text-center mb-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2, ease: "easeOut", delay: 1 }} // Delay after the name animation
+          >
+            Work Experience
+        </motion.h2>
 
         <motion.div
           className="w-full max-w-5xl mx-auto p-6 bg-white shadow-lg rounded-lg flex items-center"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 1 }}
         >
           {/* Intel Logo */}
           <div className="w-112 h-112 mr-12"> {/* Doubled the size to w-112 h-112 */}
