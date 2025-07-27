@@ -37,10 +37,12 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: 2, ease: "easeOut", delay: 1 }} // Delay after the name animation
           >
-            Hi, I'm Nicholas! I'm a senior computer science student at Oregon State University with an applied focus in Data Science. 
-            I am driven by my passion for creatively solving problems and collaborating with others, and I enjoy analyzing information and making data-driven decisions.
-            I have experience coding in Python, JavaScript, Typescript, C/C++, and experience building full-stack applications with frameworks such as 
-            Angular, React, Django. 
+                Hi, I'm Nicholas! I am graduating with a B.S. in Computer Science from Oregon State University in the Summer of 2025 with an applied focus in Data Science. My internships at 
+                Intel and Seeq have given me hands-on experience in full-stack development, SDK design, API integrations, and data 
+                analytics. I'm skilled in Python, JavaScript, TypeScript, Kotlin, Java, and C/C++, and have built scalable applications using frameworks 
+                like Angular, React, Django, and Next.js. I enjoy solving complex problems, building intuitive tools, and working on cross-functional teams 
+                to turn ideas into impactful software.
+
           </motion.p>
 
           <motion.p
@@ -60,119 +62,75 @@ export default function Home() {
           className="text-3xl font-semibold text-center mb-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 2, ease: "easeOut", delay: 1 }} // Delay after the name animation
-          >
-            Work Experience
+          transition={{ duration: 2, ease: "easeOut", delay: 1 }}
+        >
+          Work Experience
         </motion.h2>
 
-        <motion.div
-          className="w-full max-w-5xl mx-auto p-6 bg-white shadow-lg rounded-lg flex items-center"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut", delay: 1 }}
-        >
-          {/* Intel Logo */}
-          <div className="w-112 h-112 mr-12"> {/* Doubled the size to w-112 h-112 */}
-            <img src="/intel-logo.png" alt="Intel Logo" className="w-full h-full object-contain" />
-          </div>
+        {/* Timeline and Cards Container */}
+        <div className="relative max-w-5xl mx-auto pl-10">
+          {/* Vertical Timeline */}
+          <div className="absolute left-0 top-0 h-full w-[3px] bg-gray-700 rounded"></div>
 
-          {/* Intel Internship Description */}
-          <div className="flex-1"> {/* Allow the text to fill remaining space */}
-            <h3 className="text-xl font-semibold mb-2">Intel - Software Engineering Intern</h3>
-            <p className="text-lg leading-relaxed mb-4">
-              I am currently working as a Software Engineering Intern at Intel, where I collaborate with a team of engineers to develop and maintain a Manufacturing Readiness Indicator application.
-              This application is used by 1100+ employees annually in Intel manufacturing. My responsibilities include building full-stack solutions, testing solutions, and communicating with 
-              stakeholders regarding new and existing features on the application.
-            </p>
-            <span className="text-sm text-gray-500">April 2024 - Present</span>
-          </div>
-        </motion.div>
-      </section>
+          {/* Seeq Internship */}
+          <motion.div
+            className="relative flex items-center space-x-6 mb-12"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 1 }}
+          >
+            <div className="absolute left-[-8px] top-1/2 w-4 h-[2px] bg-gray-700 transform -translate-y-1/2"></div>
 
-      {/* Resume Section */}
-      <section className="w-full mt-16 flex flex-row items-center justify-center">
-        {/* Left Column: Title */}
-        <motion.div
-          className="w-1/3 text-left pr-8 max-w-[700px]" // Constrain max-width
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 2, ease: "easeOut", delay: 0.5 }}
-        >
-          <h2 className="text-4xl font-semibold mb-4">My Resume</h2>
-          <p className="text-lg leading-relaxed">
-            Click to download a PDF.
-          </p>
-        </motion.div>
-
-        {/* Right Column: Resume Card */}
-        <motion.div
-          className="w-2/3 flex justify-center max-w-[350px]" // Constrain max-width
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut", delay: 1 }}
-        >
-          <div className="relative bg-white shadow-lg rounded-lg overflow-hidden max-w-sm w-full">
-            {/* Resume Thumbnail */}
-            <div className="group relative cursor-pointer" onClick={() => setModalOpen(true)}>
-              <img
-                src="/resume-screenshot.png" // Thumbnail of your resume
-                alt="Resume Preview"
-                className="w-full h-auto group-hover:opacity-75 group-hover:scale-105 transition duration-300"
-              />
-              {/* Magnify Icon on Hover */}
-              <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300">
-                <div className="text-white text-3xl">
-                  🔍 {/* Replace with a magnifying glass icon */}
-                </div>
+            <div className="w-full p-6 bg-white shadow-lg rounded-lg flex items-center">
+              <div className="mr-12 flex-shrink-0">
+                <img
+                  src="/seeq-logo.png"
+                  alt="Seeq Logo"
+                  className="w-[185px] h-[185px] object-contain"
+                />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-lg font-semibold mb-2">Seeq - Software Engineering Intern</h3>
+                <p className="text-base leading-normal mb-4">
+                  At Seeq, I work on expanding the capabilities of the Seeq Python (SPy) SDK to support automation and extensibility across enterprise workflows. 
+                  My contributions include integrating RESTful APIs, enhancing Docker-based microservices, and maintaining plug-ins using Python, Kotlin, Java, 
+                  and TypeScript. I also help improve internal developer tools through modular full-stack patterns.
+                </p>
+                <span className="text-xs text-gray-500">June 2025 – Present</span>
               </div>
             </div>
-          </div>
-        </motion.div>
-      </section>
+          </motion.div>
 
-      {/* Modal for Enlarged Resume */}
-      {isModalOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
-          onClick={() => setModalOpen(false)} // Close modal on background click
-        >
-          <div
-            className="bg-white p-4 rounded-lg shadow-lg relative max-w-4xl w-full"
-            onClick={(e) => e.stopPropagation()} // Prevent modal close on content click
+          {/* Intel Internship */}
+          <motion.div
+            className="relative flex items-center space-x-6 mb-12"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 1.2 }}
           >
-            {/* Modal Header */}
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-semibold">Resume Preview</h3>
-              <button
-                className="text-gray-500 hover:text-gray-700"
-                onClick={() => setModalOpen(false)}
-              >
-                Close
-              </button>
-            </div>
+            <div className="absolute left-[-8px] top-1/2 w-4 h-[2px] bg-gray-700 transform -translate-y-1/2"></div>
 
-            {/* Full-Sized Resume */}
-            <div className="flex justify-center">
-              <img
-                src="/resume-screenshot.png" // Larger image of your resume
-                alt="Full Resume"
-                className="max-h-[80vh] max-w-[90vw] object-contain border-4 border-gray-200 shadow-lg"
-              />
+            <div className="w-full p-6 bg-white shadow-lg rounded-lg flex items-center">
+              <div className="mr-12 flex-shrink-0">
+                <img
+                  src="/intel-logo.png"
+                  alt="Intel Logo"
+                  className="w-[185px] h-[185px] object-contain"
+                />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-lg font-semibold mb-2">Intel - Software Engineering Intern</h3>
+                <p className="text-base leading-normal mb-4">
+                  At Intel, I was part of a 5–10 person team developing a Django/Angular based web application used by 1,100+ manufacturing stakeholders annually. 
+                  I delivered full-stack improvements to admin tools and UI components, boosting engagement by 190% and reducing load times by 40%. I also built a 
+                  real-time analytics system using Python, Plotly, and Angular to visualize app usage and performance metrics across Intel’s global campuses.
+                </p>
+                <span className="text-xs text-gray-500">April 2024 – June 2025</span>
+              </div>
             </div>
-
-            {/* Modal Footer */}
-            <div className="mt-4 text-right">
-              <a
-                href="/NicholasArajResume.pdf"
-                download
-                className="bg-[#529d7c] text-white py-2 px-4 rounded-lg shadow hover:bg-[#4b8e70] transition duration-300"
-              >
-                Download
-              </a>
-            </div>
-          </div>
+          </motion.div>
         </div>
-      )}
+      </section>
     </main>
   );
 }
