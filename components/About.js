@@ -31,7 +31,7 @@ export default function About() {
 
       {/* Content */}
       <motion.div
-        className="flex flex-col md:flex-row items-start justify-center gap-16"
+        className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-16"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -41,15 +41,15 @@ export default function About() {
         <motion.img
           src="/profile.jpg"
           alt="Nicholas Araj"
-          className="w-80 h-auto rounded-lg shadow-lg md:ml-[-2rem]"
+          className="w-80 h-auto rounded-lg shadow-lg lg:ml-[-2rem]"
           variants={imageVariants}
         />
 
         {/* Description + Education */}
-        <div className="flex flex-col items-start space-y-6 w-full max-w-xl">
+        <div className="flex flex-col items-center lg:items-start space-y-6 w-full max-w-xl">
           {/* Short Description */}
           <motion.p
-            className="text-lg leading-relaxed text-gray-400"
+            className="text-lg leading-relaxed text-gray-400 text-center lg:text-left"
             variants={textVariants}
           >
             I'm a software developer with experience building full-stack, data-driven applications. 

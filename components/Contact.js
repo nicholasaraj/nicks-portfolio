@@ -56,9 +56,9 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
         >
           <p className="text-lg text-gray-400 mb-8 leading-relaxed font-mono">
-            Thanks for visiting my portfolio! I’m always excited to dive 
-            into new opportunities, collaborate on innovative projects, and build real-world solutions. 
-            Feel free to reach out-I’d love to hear from you!
+            Thanks for visiting my portfolio! I’m always excited to take on 
+            new opportunities, collaborate on innovative projects, and build real-world solutions. 
+            Feel free to take a look at my resume and reach out—I’d love to hear from you!
           </p>
           <a
             href={`mailto:${personalInfo.email}`}

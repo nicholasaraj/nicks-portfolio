@@ -15,33 +15,41 @@ export default function Projects() {
     {
       title: 'Healthcare Cost Transparency App',
       shortDesc: 'Full-stack web app for exploring and visualizing healthcare costs.',
+      longDesc:
+        'A full-stack web app designed to improve healthcare cost transparency by parsing and visualizing complex MRF (Machine Readable Files) pricing data. Includes a chatbot, interactive cost map, and exportable tables for exploring procedures and provider prices.',
       techStack: 'Django, Next.js, Supabase, PostgreSQL, OpenAI API, Mapbox',
       screenshots: ['/map.png', '/login.png', '/chatbot.png'],
       bulletPoints: [
-        'Natural language chatbot with Supabase SQL integration',
-        'Interactive Mapbox provider location map',
-        'Dynamic data table with filtering & export',
-        'Supabase auth with protected routes'
+        'Natural language chatbot using OpenAI API with Supabase SQL query integration.',
+        'Mapbox-powered map showing NPPES provider locations across the U.S.',
+        'Dynamic data table for MRF procedure data with advanced filtering and CSV/JSON export.',
+        'Supabase authentication and protected routes for verified users.',
       ],
       repoLink: 'https://github.com/nicholasaraj/healthcare-transparency-app',
     },
     {
       title: 'Tarpaulin Course Management API',
       shortDesc: 'REST API for a course management system with role-based access.',
+      longDesc:
+        'A fully-featured REST API for a lightweight course management system deployed on Google Cloud. Supports role-based access control, JWT authentication, avatar storage, course and enrollment management.',
       techStack: 'Flask, Google Cloud Datastore, Auth0, App Engine, Postman',
       screenshots: ['/endpoints.png'],
       bulletPoints: [
-        'Role-based access: Admin, Instructor, Student',
-        'Auth0 JWT authentication',
-        'Avatar uploads via GCS',
-        'CRUD endpoints with pagination'
+        'Role-based access: Admin, Instructor, Student with permission enforcement.',
+        'Auth0-based JWT authentication for secure sessions.',
+        'Avatar upload/download/delete using Google Cloud Storage.',
+        'CRUD endpoints for users and courses with enrollment tracking.',
+        'Cursor-based pagination on list endpoints for performance.',
+        'Deployed to Google App Engine backed by Datastore.',
       ],
       repoLink: 'https://github.com/nicholasaraj/tarpaulin-course-api',
     },
     {
       title: 'Android Weather Forecast App',
       shortDesc: 'Native Android app displaying current & 5-day forecasts.',
-      techStack: 'Kotlin, Jetpack, Room, Retrofit, OpenWeather API',
+      longDesc:
+        'An Android weather app built in Kotlin using Jetpack components and the OpenWeather API. Fetches current weather and five-day forecasts, stores recent searches locally, and offers quick city switching via a navigation drawer.',
+      techStack: 'Kotlin, Jetpack Navigation, Room, Retrofit, OpenWeather API',
       screenshots: [
         '/current-weather.png',
         '/five-day.png',
@@ -49,22 +57,25 @@ export default function Projects() {
         '/settings.png',
       ],
       bulletPoints: [
-        'Search cities & view forecasts',
-        'Local Room DB for recent cities',
-        'Navigation drawer city switch',
-        'Persist settings via SharedPreferences'
+        'Search for U.S. cities to fetch real-time current conditions and 5-day forecasts.',
+        'Persist recent searches in a local Room database for offline reuse.',
+        'Navigation drawer listing recent cities sorted by most recent view.',
+        'User preferences (units, theme) saved via SharedPreferences.',
       ],
       repoLink: 'https://github.com/nicholasaraj/android-weather-forecast',
     },
     {
       title: 'Oregon Hazards Dashboard',
       shortDesc: 'Streamlit app visualizing geospatial hazard data in Oregon.',
+      longDesc:
+        'An interactive Streamlit dashboard visualizing Oregon’s wildfire, landslide, and precipitation data to aid risk assessment. Users can filter by precipitation levels, burn index, and repair cost, and explore dynamic map layers in real time.',
       techStack: 'Streamlit, Folium, GeoPandas, Pandas',
       screenshots: ['/oregon-dashboard.png'],
       bulletPoints: [
-        'Interactive Folium map with hazard layers',
-        'Choropleth by avg precipitation',
-        'Filters for burn index & repair cost'
+        'Choropleth map shaded by average county precipitation via GeoPandas.',
+        'Toggleable wildfire and landslide layers on an interactive Folium map.',
+        'Sliders to filter data by burn index and landslide repair cost.',
+        'Streamlit UI with real-time map updates and embedded charts.',
       ],
       repoLink: 'https://github.com/nicholasaraj/oregon-hazard-dashboard',
     },
@@ -78,12 +89,11 @@ export default function Projects() {
   useEffect(() => {
     document.body.style.overflow = modalOpen ? 'hidden' : '';
     return () => {
-      // cleanup if the component unmounts
       document.body.style.overflow = '';
     };
   }, [modalOpen]);
 
-  const openModal = idx => {
+  const openModal = (idx) => {
     setActiveIndex(idx);
     setSlideIndex(0);
     setModalOpen(true);
@@ -93,12 +103,14 @@ export default function Projects() {
   const project = projects[activeIndex];
 
   const prevSlide = () =>
-    setSlideIndex(i => (i === 0 ? project.screenshots.length - 1 : i - 1));
+    setSlideIndex((i) => (i === 0 ? project.screenshots.length - 1 : i - 1));
   const nextSlide = () =>
-    setSlideIndex(i => (i === project.screenshots.length - 1 ? 0 : i + 1));
+    setSlideIndex((i) =>
+      i === project.screenshots.length - 1 ? 0 : i + 1
+    );
 
   const ProjectCard = ({ project, index }) => {
-    const techs = project.techStack.split(',').map(t => t.trim());
+    const techs = project.techStack.split(',').map((t) => t.trim());
     return (
       <div className="relative group">
         {/* Glowing border on hover */}
@@ -125,7 +137,10 @@ export default function Projects() {
             <p className="text-sm text-gray-400 font-mono flex flex-wrap items-center gap-2">
               <strong>Tech:</strong>
               {techs.map((tech, i) => (
-                <span key={i} className="text-xs bg-[#0f172a] text-[#00f5c3] px-2 py-1 rounded-full">
+                <span
+                  key={i}
+                  className="text-xs bg-[#0f172a] text-[#00f5c3] px-2 py-1 rounded-full"
+                >
                   {tech}
                 </span>
               ))}
@@ -138,7 +153,7 @@ export default function Projects() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center text-gray-300 hover:text-[#529d7c] transition-colors font-mono text-sm"
-                onClick={e => e.stopPropagation()}
+                onClick={(e) => e.stopPropagation()}
               >
                 <FaGithub size={18} className="mr-2" />
                 Code
@@ -146,7 +161,7 @@ export default function Projects() {
             )}
             <button
               className="text-[#529d7c] hover:underline font-mono text-sm"
-              onClick={e => {
+              onClick={(e) => {
                 e.stopPropagation();
                 openModal(index);
               }}
@@ -183,7 +198,7 @@ export default function Projects() {
         >
           <motion.div
             className="bg-[#1e293b] rounded-lg w-11/12 md:w-11/12 lg:w-3/4 p-6 relative overflow-y-auto max-h-[95vh]"
-            onClick={e => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.3 }}
@@ -198,7 +213,7 @@ export default function Projects() {
             <h2 className="text-3xl font-bold text-[#529d7c] mb-4 font-mono">
               {project.title}
             </h2>
-            <p className="text-gray-300 mb-4">{project.shortDesc}</p>
+            <p className="text-gray-300 mb-4">{project.longDesc}</p>
             <ul className="list-disc list-inside text-gray-300 mb-4">
               {project.bulletPoints.map((bp, i) => (
                 <li key={i}>{bp}</li>
@@ -208,6 +223,7 @@ export default function Projects() {
               <strong>Tech Stack:</strong> {project.techStack}
             </p>
 
+            {/* Screenshots */}
             {activeIndex === 2 ? (
               <div className="flex flex-wrap justify-center gap-4 mb-4">
                 {project.screenshots.map((src, i) => (
@@ -219,29 +235,33 @@ export default function Projects() {
                   />
                 ))}
               </div>
-            ) : (
+            ) : project.screenshots.length > 1 ? (
               <div className="relative flex items-center justify-center mb-4">
-                {project.screenshots.length > 1 && (
-                  <button
-                    onClick={prevSlide}
-                    className="absolute left-2 text-gray-400 hover:text-white z-10"
-                  >
-                    <ChevronLeft size={32} />
-                  </button>
-                )}
+                <button
+                  onClick={prevSlide}
+                  className="absolute left-2 text-gray-400 hover:text-white z-10"
+                >
+                  <ChevronLeft size={32} />
+                </button>
                 <img
                   src={project.screenshots[slideIndex]}
                   alt={`${project.title} screenshot`}
                   className="max-h-[400px] rounded shadow-lg"
                 />
-                {project.screenshots.length > 1 && (
-                  <button
-                    onClick={nextSlide}
-                    className="absolute right-2 text-gray-400 hover:text-white z-10"
-                  >
-                    <ChevronRight size={32} />
-                  </button>
-                )}
+                <button
+                  onClick={nextSlide}
+                  className="absolute right-2 text-gray-400 hover:text-white z-10"
+                >
+                  <ChevronRight size={32} />
+                </button>
+              </div>
+            ) : (
+              <div className="flex flex-wrap justify-center gap-4 mb-4">
+                <img
+                  src={project.screenshots[0]}
+                  alt={`${project.title} screenshot`}
+                  className="max-h-[400px] rounded shadow-lg"
+                />
               </div>
             )}
 
@@ -260,5 +280,5 @@ export default function Projects() {
         </div>
       )}
     </main>
-);
+  );
 }
