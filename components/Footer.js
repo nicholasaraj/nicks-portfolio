@@ -1,33 +1,16 @@
+// components/Footer.js
+import React from 'react';
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 
 export default function Footer() {
   return (
-    <div className="fixed bottom-10 right-10 flex space-x-4 text-gray-800">
-      {/* LinkedIn */}
-      <a
-        href="https://www.linkedin.com/in/nick-araj/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hover:text-gray-500 transform hover:scale-125 transition-transform duration-300"
-      >
-        <FaLinkedin size={40} />
-      </a>
-      {/* GitHub */}
-      <a
-        href="https://github.com/nicholasaraj"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hover:text-gray-500 transform hover:scale-125 transition-transform duration-300"
-      >
-        <FaGithub size={40} />
-      </a>
-      {/* Email */}
-      <a
-        href="mailto:nicholasaraj@yahoo.com"
-        className="hover:text-gray-500 transform hover:scale-125 transition-transform duration-300"
-      >
-        <FaEnvelope size={40} />
-      </a>
-    </div>
+    <footer className="bg-gradient-to-t from-[#0f172a] to-[#1e293b] text-gray-400 py-6">
+      <p className="mt-4 text-center text-med text-gray-600">
+        Designed and built by Nicholas Araj.
+      </p>
+      <p className="mt-2 text-center text-sm text-gray-600">
+        © {new Date().getFullYear()} Nicholas Araj. All rights reserved.
+      </p>
+    </footer>
   );
 }
