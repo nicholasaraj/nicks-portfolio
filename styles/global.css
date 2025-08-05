@@ -2,11 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base font and gradient background */
 body {
-  @apply font-mono;
+  @apply font-mono bg-gradient-to-b from-[#0f172a] to-[#1e293b];
+  overscroll-behavior: none;
+  padding-right: env(safe-area-inset-right); /* supports devices with notch/padding */
 }
 
-/* Custom scrollbar for WebKit browsers */
+/* Active navbar link color */
+.active {
+  @apply text-[#529d7c];
+}
+
+/* Custom WebKit scrollbar */
 ::-webkit-scrollbar {
   width: 12px;
 }
@@ -22,7 +30,7 @@ body {
   background-clip: content-box;
 }
 
-/* Firefox scrollbar (using scrollbar-width and scrollbar-color) */
+/* Firefox scrollbar */
 * {
   scrollbar-width: thin;
   scrollbar-color: #529d7c transparent;

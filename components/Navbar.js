@@ -21,11 +21,35 @@ const navItems = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.6, // 60% of section in view triggers it
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, observerOptions);
+
+    navItems.forEach((item) => {
+      const el = document.getElementById(item.to);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   return (
@@ -46,19 +70,17 @@ export default function Navbar() {
           {personalInfo.name}
         </ScrollLink>
 
-        {/* Desktop Menu */}
         <div className="hidden lg:flex space-x-6 items-center">
-          {navItems.map(item => (
+          {navItems.map((item) => (
             <ScrollLink
               key={item.name}
               to={item.to}
-              spy
-              hashSpy
               smooth
               offset={-80}
               duration={500}
-              className="font-mono text-white hover:text-[#529d7c] transition-colors cursor-pointer"
-              activeClass="text-[#529d7c]"
+              className={`font-mono cursor-pointer transition-colors ${
+                activeSection === item.to ? 'text-[#529d7c]' : 'text-white'
+              } hover:text-[#529d7c]`}
             >
               {item.name}
             </ScrollLink>
@@ -73,7 +95,6 @@ export default function Navbar() {
           </a>
         </div>
 
-        {/* Mobile Menu Button */}
         <div className="lg:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -84,7 +105,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isOpen && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
@@ -93,18 +113,17 @@ export default function Navbar() {
           transition={{ duration: 0.3 }}
           className="lg:hidden bg-gradient-to-b from-[#0f172a] to-[#1e293b]"
         >
-          {navItems.map(item => (
+          {navItems.map((item) => (
             <ScrollLink
               key={item.name}
               to={item.to}
-              spy
-              hashSpy
               smooth
               offset={-80}
               duration={500}
-              className="block px-4 py-3 font-mono text-white hover:text-[#529d7c] hover:bg-[#1e293b] transition-colors cursor-pointer"
-              activeClass="text-[#529d7c] bg-[#1e293b]"
               onClick={() => setIsOpen(false)}
+              className={`block px-4 py-3 font-mono cursor-pointer transition-colors ${
+                activeSection === item.to ? 'text-[#529d7c] bg-[#1e293b]' : 'text-white'
+              } hover:text-[#529d7c] hover:bg-[#1e293b]`}
             >
               {item.name}
             </ScrollLink>

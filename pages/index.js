@@ -24,7 +24,9 @@ export default function Home() {
   return (
     <main className="pt-20 text-white bg-gradient-to-b from-[#0f172a] to-[#1e293b]">
       {/* Hero */}
-      <Hero />
+      <section id="hero">
+        <Hero />
+      </section>
 
       {/* About */}
       <section id="about" className="min-h-screen bg-gradient-to-b from-[#0f172a] to-[#1e293b] px-4 py-20">
