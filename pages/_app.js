@@ -1,12 +1,13 @@
+// pages/_app.js
 import '../styles/global.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 export default function MyApp({ Component, pageProps }) {
   return (
-    <div className="flex flex-col min-h-screen bg-backgroundColor">
+    <div className="flex flex-col bg-backgroundColor">
       <Navbar />
-      <main className="flex-grow">
+      <main>
         <Component {...pageProps} />
       </main>
       <Footer />

@@ -8,7 +8,10 @@ module.exports = {
     extend: {
       colors: {
         backgroundColor: '#FAF9F6',
-      }
+      },
+      fontFamily: {
+        mono: ['"Fira Code"', 'monospace'],
+      },
     },
   },
   corePlugins: {
@@ -17,4 +20,3 @@ module.exports = {
   },
   plugins: [],
 }
-
