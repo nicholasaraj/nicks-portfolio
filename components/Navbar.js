@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 const personalInfo = {
   name: 'Nicholas Araj',
-  resumeLink: '/NicholasArajResume.pdf',
+  resumeLink: '/Nicholas-Araj-Resume-8-25.pdf',
 };
 
 const navItems = [

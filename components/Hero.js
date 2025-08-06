@@ -8,7 +8,7 @@ const Hero = () => {
   const personalInfo = {
     name: 'Nicholas Araj',
     bio: `Innovative software developer passionate about creating impactful and practical solutions. Eager to leverage modern technologies to solve real-world problems and contribute to collaborative team environments.`,
-    resumeLink: '/NicholasArajResume.pdf',
+    resumeLink: '/Nicholas-Araj-Resume-8-25.pdf',
   };
 
   const socialLinks = {
