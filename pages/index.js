@@ -1,5 +1,6 @@
 // pages/index.js
 import { useEffect } from 'react';
+import Head from 'next/head';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Experience from '@/components/Experience';
@@ -23,6 +24,12 @@ export default function Home() {
 
   return (
     <main className="pt-20 text-white bg-gradient-to-b from-[#0f172a] to-[#1e293b]">
+      <Head>
+        <title>Nicholas Araj</title>
+        <meta name="description" content="Software Developer Portfolio for Nicholas Araj"/>
+        <link rel="icon" href="/NA.png" type="image/png" />
+      </Head>
+
       {/* Hero */}
       <section id="hero">
         <Hero />
