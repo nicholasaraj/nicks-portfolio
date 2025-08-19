@@ -77,7 +77,7 @@ export default function About() {
               </h2>
               <p className="text-white font-medium">Oregon State University</p>
               <p className="text-sm text-gray-400">B.S. in Computer Science — Data Science Applied Option</p>
-              <p className="text-sm text-gray-400">Graduating Summer 2025</p>
+              <p className="text-sm text-gray-400">September 2021 - August 2025</p>
             </div>
           </motion.div>
         </div>
